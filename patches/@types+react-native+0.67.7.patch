@@ -1,0 +1,59 @@
+diff --git a/node_modules/@types/react-native/Libraries/Types/CodegenTypes.d.ts b/node_modules/@types/react-native/Libraries/Types/CodegenTypes.d.ts
+new file mode 100644
+index 0000000..8026189
+--- /dev/null
++++ b/node_modules/@types/react-native/Libraries/Types/CodegenTypes.d.ts
+@@ -0,0 +1,15 @@
++// @flow
++import type { NativeSyntheticEvent } from "../../index";
++declare type BubblingEventHandler<T, PaperName extends string | never = never> = (event: NativeSyntheticEvent<T>) => void | Promise<void>;
++declare type DirectEventHandler<T, PaperName extends string | never = never> = (event: NativeSyntheticEvent<T>) => void | Promise<void>;
++declare type Double = number;
++declare type Float = number;
++declare type Int32 = number;
++declare type DefaultTypes = number | boolean | string | ReadonlyArray<string>;
++declare type WithDefault<Type extends DefaultTypes, Value extends (null | undefined | Type) | string> = null | undefined | Type;
++export type { BubblingEventHandler };
++export type { DirectEventHandler };
++export type { Double };
++export type { Float };
++export type { Int32 };
++export type { WithDefault };
+\ No newline at end of file
+diff --git a/node_modules/@types/react-native/Libraries/Utilities/codegenNativeCommands.d.ts b/node_modules/@types/react-native/Libraries/Utilities/codegenNativeCommands.d.ts
+new file mode 100644
+index 0000000..ef4e470
+--- /dev/null
++++ b/node_modules/@types/react-native/Libraries/Utilities/codegenNativeCommands.d.ts
+@@ -0,0 +1,8 @@
++// @flow
++declare type Options<T = string> = Readonly<{
++  supportedCommands: ReadonlyArray<T>;
++}>;
++
++declare function codegenNativeCommands<T extends {}>(options: Options<keyof T>): T;
++
++export default codegenNativeCommands;
+\ No newline at end of file
+diff --git a/node_modules/@types/react-native/Libraries/Utilities/codegenNativeComponent.d.ts b/node_modules/@types/react-native/Libraries/Utilities/codegenNativeComponent.d.ts
+new file mode 100644
+index 0000000..733d88b
+--- /dev/null
++++ b/node_modules/@types/react-native/Libraries/Utilities/codegenNativeComponent.d.ts
+@@ -0,0 +1,15 @@
++// @flow
++import type { HostComponent } from "../../index";
++
++declare type Options = Readonly<{
++  interfaceOnly?: boolean;
++  paperComponentName?: string;
++  paperComponentNameDeprecated?: string;
++  excludedPlatforms?: ReadonlyArray<"iOS" | "android">;
++}>;
++
++declare type NativeComponentType<T> = HostComponent<T>;
++
++declare function codegenNativeComponent<Props>(componentName: string, options?: Options): NativeComponentType<Props>;
++
++export default codegenNativeComponent;
+\ No newline at end of file
