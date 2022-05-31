@@ -259,6 +259,17 @@ android {
 
         }
     }
+
+    // for make kotlin detect generated source path
+    sourceSets.main {
+        java {
+            if (isNewArchitectureEnabled()) {
+                srcDirs += [
+                    "build/generated/source/codegen/java"
+                ]
+            }
+        }
+    }
 }
 
 dependencies {
