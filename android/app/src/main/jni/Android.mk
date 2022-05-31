@@ -42,7 +42,8 @@ LOCAL_SHARED_LIBRARIES := \
   librrc_view \
   libruntimeexecutor \
   libturbomodulejsijni \
-  libyoga
+  libyoga \
+  react_codegen_newarchsample
 
 LOCAL_CFLAGS := -DLOG_TAG=\"ReactNative\" -fexceptions -frtti -std=c++17 -Wall
 
