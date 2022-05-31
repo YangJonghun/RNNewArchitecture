@@ -85,6 +85,18 @@ project.ext.react = [
 
 apply from: "../../node_modules/react-native/react.gradle"
 
+if (isNewArchitectureEnabled()) {
+    apply plugin: "com.facebook.react"
+    react {
+        root = rootProject.file('..')
+        libraryName = "newarchsample"
+        jsRootDir = rootProject.file("../src/new-module/")
+        codegenJavaPackageName = "com.newrn.codegen"
+        reactNativeDir = rootProject.file("../node_modules/react-native/")
+        codegenDir = rootProject.file("../node_modules/react-native-codegen/")
+    }
+}
+
 /**
  * Set this to true to create two separate APKs instead of one:
  *   - An APK that only works on ARM devices
